@@ -1,14 +1,10 @@
 <script>
-  import DisplayData from "$lib/components/DisplayData.svelte"
-  import "../app.css";
-  import {supabase} from "../supabase"
-  // console.log(supabase)
+  import "bootstrap/dist/css/bootstrap.css"
+  // import {supabase} from "../supabase"
+
 </script>
 
-<!-- <Header /> -->
-<!-- <DisplayData data={supabase.auth} /> -->
-<!-- <DisplayData data={supabase.auth} /> -->
-<main>
+<main class="container-xs">
   <slot />
 </main>
 
@@ -18,33 +14,4 @@
   </p>
 </footer> -->
 
-<style>
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    width: 100%;
-    max-width: 1024px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
 
-  footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-  }
-
-  footer a {
-    font-weight: bold;
-  }
-
-  @media (min-width: 480px) {
-    footer {
-      padding: 40px 0;
-    }
-  }
-</style>

@@ -1,8 +1,10 @@
 <script>
+// @ts-nocheck
+
   import {todoList, hasChanged, msg} from "$lib/store"
 
-  export let todo
-  export let index
+  export let todo = {}
+  export let index = 0
   // $: console.log(to)
   function displayMsg() {
     $hasChanged = true;
@@ -23,56 +25,12 @@
 
 </script>
 
-<div class="todo {index % 2 === 0 ? 'primary' : 'secondary'}">
-      <span>
-        {todo.text}
-      </span>
-      <div>
-        <span role="button" on:click={()=> todo.done = !todo.done} class:check={todo.done == true} class=" semibold">&check;</span>
-        <span role="button" class="remove semibold" on:click={deleteTask(todo.id)}
-          >&times;</span
-        >
-      </div>
-    </div>
-
-    <style>
-      .semibold {
-    font-weight: 600;
-  }
-
-  .check {
-    color: green;
-    transform: brightness(125%);
-  }
-
-  
-
-  .todo {
-    display: flex;
-    justify-content: space-between;
-
-    font-size: 1.25em;
-    padding: 8px;
-    margin-bottom: 8px;
-    border-radius: 8px;
-    color: #444;
-  }
-  .primary {
-    background: rgba(127, 0, 127, 0.3);
-  }
-  .secondary {
-    background: rgba(127, 127, 0, 0.3);
-  }
-  
-  
-
-  .remove {
-    cursor: pointer;
-  }
-
-  /* @media (min-width: 640px) {
-    .list {
-      width: 50%;
-    }
-  } */
-    </style>
+<div class="d-flex justify-content-between text-uppercase alert alert-{index % 2 === 0 ? 'primary' : 'warning'} fs-5">
+  <span>{todo.text}</span>
+  <div>
+    <span role="button" on:click={()=> todo.done = !todo.done} class:text-success={todo.done} class="fw-bold me-2">&check;</span>
+    <span role="button" class="remove fw-bold" on:click={deleteTask(todo.id)} >
+      &times;
+    </span>
+  </div>
+</div>
