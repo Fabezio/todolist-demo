@@ -23,7 +23,12 @@
     // console.log(e.key);
     if (todo.length && e.key === "Enter") {
       // textStatus = "valid";
-      $todoList = [...$todoList, todo];
+      const newTodo = {
+        id: Date.now(), 
+        text: todo, 
+        done: false
+      }
+      $todoList = [...$todoList, newTodo];
       todo = "";
     }
   }

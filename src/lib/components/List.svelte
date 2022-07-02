@@ -1,6 +1,8 @@
 <script>
   import { todoList, msg, hasChanged } from "../store";
   import { fly } from "svelte/transition";
+  import Todo from './Todo.svelte'
+  import DisplayData from "$lib/components/DisplayData.svelte"
   //   export let hasChanged;
 
   console.log($todoList);
@@ -11,31 +13,33 @@
     }, 1500);
   }
 
-  function deleteTask(id) {
-    // console.log(id);
-    const removedItem = $todoList.filter((itm) => itm !== id);
-    console.log(removedItem);
-    $todoList = removedItem;
-    if ($todoList.length === 0) {
-      console.log($msg);
-      displayMsg();
-    }
-  }
+  // function deleteTask(id) {
+  //   console.log(id);
+  //   const removedItem = $todoList.filter((itm) => itm !== id);
+  //   console.log(removedItem);
+  //   $todoList = removedItem;
+  //   if ($todoList.length === 0) {
+  //     console.log($msg);
+  //     displayMsg();
+  //   }
+  // }
 </script>
 
 <div class="list">
   {#each $todoList as thisTodo, i}
+  <Todo todo={thisTodo} index={i} />
     <!-- <p>{todoList[0]}</p> -->
-    <div class="todo {i % 2 === 0 ? 'primary' : 'secondary'}">
+    <!-- <div class="todo {i % 2 === 0 ? 'primary' : 'secondary'}">
       <span>
         {thisTodo}
       </span>
       <span role="button" class="remove semibold" on:click={deleteTask(thisTodo)}
         >&times;</span
       >
-    </div>
+    </div> -->
   {/each}
   {#if $todoList.length}
+  <!-- <DisplayData data={$todoList} /> -->
     <div
       transition:fly={{ duration: "1000", y: "500" }}
       class="todo info delete"
@@ -61,9 +65,7 @@
       opacity: 1;
     }
   } */
-  .semibold {
-    font-weight: 600;
-  }
+  
 
   .list {
     width: 100%;
@@ -81,26 +83,21 @@
     border-radius: 8px;
     color: #444;
   }
-  .primary {
-    background: rgba(127, 0, 127, 0.3);
-  }
-  .secondary {
-    background: rgba(127, 127, 0, 0.3);
-  }
+  
   .info {
     background: rgba(0, 127, 255, 0.3);
     padding: 0.75em;
     box-shadow: 8px 8px 1em rgba(0, 0, 0, 0.5);
   }
 
-  .remove, 
+
   .delete {
     cursor: pointer;
   }
 
-  @media (min-width: 640px) {
+  /* @media (min-width: 640px) {
     .list {
-      /* width: 50%; */
+      width: 50%;
     }
-  }
+  } */
 </style>

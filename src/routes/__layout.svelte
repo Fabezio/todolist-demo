@@ -1,19 +1,22 @@
 <script>
-  // import Header from '$lib/Header/index.svelte';
+  import DisplayData from "$lib/components/DisplayData.svelte"
   import "../app.css";
+  import {supabase} from "../supabase"
+  // console.log(supabase)
 </script>
 
 <!-- <Header /> -->
-
+<!-- <DisplayData data={supabase.auth} /> -->
+<!-- <DisplayData data={supabase.auth} /> -->
 <main>
   <slot />
 </main>
 
-<footer>
+<!-- <footer>
   <p>
     visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
   </p>
-</footer>
+</footer> -->
 
 <style>
   main {
