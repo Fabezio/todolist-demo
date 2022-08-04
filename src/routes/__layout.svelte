@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" >
   import "bootstrap/dist/css/bootstrap.css"
   // import {supabase} from "../supabase"
 

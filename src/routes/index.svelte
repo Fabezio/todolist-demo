@@ -1,8 +1,8 @@
-<script context="module">
+<script lang="ts" context="module">
   export const prerender = true;
 </script>
 
-<script>
+<script lang="ts">
 // @ts-nocheck
 
   import { onMount } from "svelte";

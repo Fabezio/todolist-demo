@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {todoList, hasChanged} from "$lib/store"
   import { fade, fly } from "svelte/transition";
   import displayMsg from "$lib/utils/displayMsg"

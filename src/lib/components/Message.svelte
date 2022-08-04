@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 // @ts-nocheck
 
   import { hasChanged, msg } from "../store";
@@ -26,7 +26,7 @@
 
 <style>
   
-  @keyframes fade {
+  /* @keyframes fade {
     0%,
     100% {
       opacity: 0;
@@ -35,5 +35,5 @@
     90% {
       opacity: 1;
     }
-  }
+  } */
   </style>
