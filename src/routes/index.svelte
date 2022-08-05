@@ -4,7 +4,7 @@
 
 <script lang="ts" >
   import { onMount } from "svelte";
-  // import {TODO} from "$lib/types"
+  import type {TODO} from "$lib/types"
   import List from "$lib/components/List.svelte";
   import Message from "$lib/components/Message.svelte";
   import { todoList, hasChanged, msg } from "$lib/store";
@@ -24,11 +24,7 @@
     // console.log(e.key);
     if (todo.length && e.key === "Enter") {
       // textStatus = "valid";
-      const newTodo:{
-        id: number,
-        text: string,
-        done: boolean
-      } = {
+      const newTodo:TODO = {
         id: Date.now(), 
         text: todo, 
         done: false,

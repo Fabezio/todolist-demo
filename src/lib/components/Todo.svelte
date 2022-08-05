@@ -9,7 +9,7 @@
     done: false,
   }
   export let index: number
-  // $: console.log(to)
+
   function displayMsg() {
     $hasChanged = true;
     setTimeout(() => {
@@ -17,7 +17,7 @@
     }, 1500);
   }
   function deleteTask(id: number) {
-    // console.log(id);
+
     const removedItem = $todoList.filter((itm: TODO) => itm.id !== id);
     console.log(removedItem);
     $todoList = removedItem;
@@ -37,10 +37,7 @@
       <div>
         <i role="button" class="fs-4 bi bi-check" on:click={()=> todo.done = !todo.done} class:check={todo.done == true}  />
         <i role="button" class="fs-4 bi bi-x" on:click={deleteTask(todo.id)} />
-        <!-- <span role="button" on:click={()=> todo.done = !todo.done} class:check={todo.done == true} class=" semibold">&check;</span>
-        <span role="button" class="remove semibold" on:click={deleteTask(todo.id)}
-          >&times;</span
-        > -->
+        
       </div>
     </div>
 
