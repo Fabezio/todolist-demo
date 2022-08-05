@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" >
   import { todoList, hasChanged, msg } from "../store";
  import {fade} from "svelte/transition"
   //   export let hasChanged;
@@ -67,10 +67,10 @@
     padding: 0.75em;
     box-shadow: 8px 8px 1em rgba(0, 0, 0, 0.5);
   }
-
+/* 
   @media (min-width: 640px) {
     .bar {
-      /* width: 50%; */
+      width: 50%;
     }
-  }
+  } */
 </style>

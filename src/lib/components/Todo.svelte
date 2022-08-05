@@ -1,9 +1,14 @@
-<script>
+<script lang="ts" >
   import {todoList, hasChanged, msg} from "$lib/store"
+  import type {TODO} from "$lib/types"
   import 'bootstrap-icons/font/bootstrap-icons.scss'
 
-  export let todo
-  export let index
+  export let todo: TODO={
+    id: 0,
+    text: "",
+    done: false,
+  }
+  export let index: number
   // $: console.log(to)
   function displayMsg() {
     $hasChanged = true;
@@ -11,15 +16,16 @@
       $hasChanged = false;
     }, 1500);
   }
-  function deleteTask(id) {
+  function deleteTask(id: number) {
     // console.log(id);
-    const removedItem = $todoList.filter((itm) => itm.id !== id);
+    const removedItem = $todoList.filter((itm: TODO) => itm.id !== id);
     console.log(removedItem);
     $todoList = removedItem;
     if ($todoList.length === 0) {
       console.log($msg);
       displayMsg();
     }
+    return $todoList
   }
 
 </script>
@@ -39,9 +45,9 @@
     </div>
 
     <style>
-      .semibold {
+      /* .semibold {
     font-weight: 600;
-  }
+  } */
 
   .check {
     color: green;
@@ -69,9 +75,9 @@
   
   
 
-  .remove {
+  /* .remove {
     cursor: pointer;
-  }
+  } */
 
   /* @media (min-width: 640px) {
     .list {

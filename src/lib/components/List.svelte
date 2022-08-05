@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" >
   import { todoList, msg, hasChanged } from "../store";
   import { fly } from "svelte/transition";
   import Todo from './Todo.svelte'
@@ -41,7 +41,7 @@
   {#if $todoList.length}
   <!-- <DisplayData data={$todoList} /> -->
     <div
-      transition:fly={{ duration: "1000", y: "500" }}
+      transition:fly={{ duration: 1000, y: 500 }}
       class="todo info delete"
       role="button"
       on:click={() => {

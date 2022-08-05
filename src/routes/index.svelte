@@ -1,13 +1,14 @@
-<script context="module">
+<script lang="ts" context="module">
   export const prerender = true;
 </script>
 
-<script>
+<script lang="ts" >
   import { onMount } from "svelte";
+  // import {TODO} from "$lib/types"
   import List from "$lib/components/List.svelte";
   import Message from "$lib/components/Message.svelte";
   import { todoList, hasChanged, msg } from "$lib/store";
-
+  // $todoList:  ;
   onMount(() => {
     $hasChanged = false;
   });
@@ -18,17 +19,21 @@
 
   let todo = "";
 
-  function addTodo(e) {
+  function addTodo(e: {key: string}) {
     // hasChanged = false;
     // console.log(e.key);
     if (todo.length && e.key === "Enter") {
       // textStatus = "valid";
-      const newTodo = {
+      const newTodo:{
+        id: number,
+        text: string,
+        done: boolean
+      } = {
         id: Date.now(), 
         text: todo, 
-        done: false
+        done: false,
       }
-      $todoList = [...$todoList, newTodo];
+      $todoList  = [...$todoList, newTodo];
       todo = "";
     }
   }
@@ -39,28 +44,21 @@
 </svelte:head>
 
 <!-- <main> -->
-  <div class="box">
+  <!-- <div class="box"> -->
     <div class="title ">
     <h1 class="titletext-center">{title}</h1>
   </div>
   <input on:keydown={addTodo} type="text" bind:value={todo} />
   <List />
   <Message />
-  </div>
+  <!-- </div> -->
     
   <!-- <p>{todoAdd}</p> -->
   <!-- <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p> -->
 <!-- </main> -->
 
 <style>
-  main {
-    text-align: center;
-    padding: 0.5em;
-    /* max-width: 240px; */
-    margin: 0 auto;
-
-    /* box-sizing: content-box; */
-  }
+  
   div.title {
     margin: 3em auto;
 

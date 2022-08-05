@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" >
   import DisplayData from "$lib/components/DisplayData.svelte"
   import "bootstrap/scss/bootstrap.scss";
   import "../app.css";
@@ -9,7 +9,7 @@
 <!-- <Header /> -->
 <!-- <DisplayData data={supabase.auth} /> -->
 <!-- <DisplayData data={supabase.auth} /> -->
-<div class="container">
+<div class="box">
   <slot />
 </div>
 
@@ -20,16 +20,16 @@
 </footer> -->
 
 <style globals>
-  main {
+  /* main {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 1rem;
     width: 100%;
-    /* max-width: 1024px; */
+    max-width: 1024px;
     margin: 0 auto;
     box-sizing: border-box;
-  }
+  } */
 
   /* footer {
     display: flex;
@@ -48,6 +48,7 @@
       padding: 40px 0;
     }
   } */
+/*   
   .box {
     margin: 1em auto;
   }
@@ -60,5 +61,5 @@
     .box {
       width: 750px;
     }
-  }
+  } */
 </style>
