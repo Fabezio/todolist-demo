@@ -38,19 +38,19 @@
   <title>{title}</title>
 </svelte:head>
 
-<main>
-  <div class="title">
-    <h1>{title}</h1>
+<!-- <main> -->
+  <div class="box">
+    <div class="title ">
+    <h1 class="titletext-center">{title}</h1>
   </div>
   <input on:keydown={addTodo} type="text" bind:value={todo} />
-  <div class="box">
-    <List />
-    <Message />
+  <List />
+  <Message />
   </div>
-
+    
   <!-- <p>{todoAdd}</p> -->
   <!-- <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p> -->
-</main>
+<!-- </main> -->
 
 <style>
   main {
@@ -68,7 +68,7 @@
   }
 
   h1 {
-    display: inline;
+    /* display: inline; */
     background: -webkit-linear-gradient(
       -135deg,
       violet,
@@ -79,6 +79,8 @@
       orange,
       red
     );
+    text-align: center;
+    margin: auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -86,10 +88,28 @@
     font-size: 3.5em;
     font-weight: 300;
   }
+  input {
+    width: 100%;
+    /* padding: ; */
+    text-indent: 0.75em;
+    height: 2.5em;
+    border-radius: 0.25em;
+    /* 
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0.5em;
+    font-size: 1.5em;
+    font-weight: 300; */
+  }
+  input {
+    margin-bottom: 1em; 
+  }
+  
+  /* 
   .box {
     position: relative;
     margin: 0 auto;
-  }
+  } */
 
   @keyframes fade {
     0%,
@@ -102,18 +122,10 @@
     }
   }
 
-  input {
+  /* input {
     width: 100%;
     margin-bottom: 1em;
-  }
+  } */
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-    input,
-    .box {
-      width: 50%;
-    }
-  }
+  
 </style>

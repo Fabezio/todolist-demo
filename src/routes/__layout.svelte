@@ -1,5 +1,6 @@
 <script>
   import DisplayData from "$lib/components/DisplayData.svelte"
+  import "bootstrap/scss/bootstrap.scss";
   import "../app.css";
   import {supabase} from "../supabase"
   // console.log(supabase)
@@ -8,9 +9,9 @@
 <!-- <Header /> -->
 <!-- <DisplayData data={supabase.auth} /> -->
 <!-- <DisplayData data={supabase.auth} /> -->
-<main>
+<div class="container">
   <slot />
-</main>
+</div>
 
 <!-- <footer>
   <p>
@@ -18,19 +19,19 @@
   </p>
 </footer> -->
 
-<style>
+<style globals>
   main {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 1rem;
     width: 100%;
-    max-width: 1024px;
+    /* max-width: 1024px; */
     margin: 0 auto;
     box-sizing: border-box;
   }
 
-  footer {
+  /* footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,6 +46,19 @@
   @media (min-width: 480px) {
     footer {
       padding: 40px 0;
+    }
+  } */
+  .box {
+    margin: 1em auto;
+  }
+
+  @media (min-width: 768px) {
+    main {
+      max-width: none;
+    }
+
+    .box {
+      width: 750px;
     }
   }
 </style>

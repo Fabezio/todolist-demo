@@ -98,14 +98,7 @@ button {
 
 button:focus:not(:focus-visible) {
 	outline: none;
-}
-
-@media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
-	}
 } */
-
 .box {
     margin: 1em auto;
   }
@@ -119,3 +112,9 @@ button:focus:not(:focus-visible) {
       width: 750px;
     }
   }
+
+@media (min-width: 720px) {
+	h1 {
+		font-size: 2.4rem;
+	}
+}

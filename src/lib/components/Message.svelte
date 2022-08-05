@@ -1,30 +1,32 @@
 <script>
   import { todoList, hasChanged, msg } from "../store";
-
+ import {fade} from "svelte/transition"
   //   export let hasChanged;
   //   export let msg;
-  function fade(node, { delay = 300, duration = 300 }) {
-    const o = +getComputedStyle(node).opacity;
+  // function fade(node, { delay = 300, duration = 300 }) {
+  //   const o = +getComputedStyle(node).opacity;
 
-    return {
-      delay,
-      duration,
-      css: (t) => `opacity: ${t * o}`,
-    };
-  }
+  //   return {
+  //     delay,
+  //     duration,
+  //     css: (t) => `opacity: ${t * o}`,
+  //   };
+  // }
 
   console.log("list state:", $hasChanged);
 </script>
-
 {#if $hasChanged && !$todoList.length}
-  <div class="bar">
-    <div transition:fade class="todo info">
-      {$msg}
+<div class="box">
+    <div class="bar">
+      <div transition:fade class="todo info">
+        {$msg}
+      </div>
     </div>
-  </div>
-  <!-- {:else}
-    <div /> -->
-{/if}
+    <!-- {:else}
+      <div /> -->
+    </div>
+  {/if}
+
 
 <style>
   /* 
@@ -40,7 +42,7 @@
   } */
 
   .bar {
-    position: absolute;
+    /* position: relative; */
     display: inline;
     top: 0;
     left: 0;
