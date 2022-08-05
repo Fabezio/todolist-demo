@@ -39,30 +39,22 @@
   <title>{title}</title>
 </svelte:head>
 
-<!-- <main> -->
-  <!-- <div class="box"> -->
-    <div class="title ">
-    <h1 class="titletext-center">{title}</h1>
-  </div>
-  <input on:keydown={addTodo} type="text" bind:value={todo} />
-  <List />
-  <Message />
-  <!-- </div> -->
-    
-  <!-- <p>{todoAdd}</p> -->
-  <!-- <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p> -->
-<!-- </main> -->
+<div class="text-center ">
+  <h1 class="title">{title}</h1>
+</div>
+
+<input on:keydown={addTodo} type="text" bind:value={todo} />
+
+<List />
+<Message />
 
 <style>
   
-  div.title {
+  .title {
     margin: 3em auto;
-
-    /* max-width: 16em; */
   }
 
   h1 {
-    /* display: inline; */
     background: -webkit-linear-gradient(
       -135deg,
       violet,
@@ -84,26 +76,11 @@
   }
   input {
     width: 100%;
-    /* padding: ; */
     text-indent: 0.75em;
     height: 2.5em;
     border-radius: 0.25em;
-    /* 
-    border: none;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 0.5em;
-    font-size: 1.5em;
-    font-weight: 300; */
-  }
-  input {
     margin-bottom: 1em; 
   }
-  
-  /* 
-  .box {
-    position: relative;
-    margin: 0 auto;
-  } */
 
   @keyframes fade {
     0%,
@@ -115,11 +92,4 @@
       opacity: 1;
     }
   }
-
-  /* input {
-    width: 100%;
-    margin-bottom: 1em;
-  } */
-
-  
 </style>

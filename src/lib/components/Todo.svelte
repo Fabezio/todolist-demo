@@ -42,14 +42,11 @@
     </div>
 
     <style>
-      /* .semibold {
-    font-weight: 600;
-  } */
-
   .check {
     color: green;
     transform: brightness(125%);
   }
+
 
   
 
