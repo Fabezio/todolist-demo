@@ -2,11 +2,12 @@
   export const prerender = true;
 </script>
 
-<script>
+<script lang="ts" >
   import { onMount } from "svelte";
   import List from "$lib/components/List.svelte";
   import Message from "$lib/components/Message.svelte";
   import { todoList, hasChanged, msg } from "$lib/store";
+  import type {todoObject} from "$lib/utils/types"
 
   onMount(() => {
     $hasChanged = false;
@@ -16,14 +17,24 @@
   //   export let name;
   const title = "todoList";
 
+  $todoList = [];
   let todo = "";
+  type evt= {
+    key: string
+  }
 
-  function addTodo(e) {
+  function addTodo(e: evt) {
     // hasChanged = false;
     // console.log(e.key);
     if (todo.length && e.key === "Enter") {
+      const newTodo: todoObject = {
+        id: Date.now(),
+        text: todo,
+        done: false,
+      };
+      console.log(typeof e);
       // textStatus = "valid";
-      $todoList = [...$todoList, todo];
+      $todoList = [...$todoList, newTodo];
       todo = "";
     }
   }
@@ -108,7 +119,7 @@
     }
     input,
     .box {
-      width: 50%;
+      width: 90%;
     }
   }
 </style>

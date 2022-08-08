@@ -1,15 +1,17 @@
-<script>
+<script lang="ts">
   import { todoList, hasChanged, msg } from "../store";
+  // import type {todoObject} from "$lib/utils/types"
 
   //   export let hasChanged;
   //   export let msg;
-  function fade(node, { delay = 300, duration = 300 }) {
+  function fade(node: Element, { delay = 300, duration = 300 }) {
+    console.log(node)
     const o = +getComputedStyle(node).opacity;
 
     return {
       delay,
       duration,
-      css: (t) => `opacity: ${t * o}`,
+      css: (t:number) => `opacity: ${t * o}`,
     };
   }
 

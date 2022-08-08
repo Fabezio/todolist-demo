@@ -1,6 +1,7 @@
-<script>
+<script lang="ts" >
   import { todoList, msg, hasChanged } from "../store";
   import { fly } from "svelte/transition";
+  import type {todoObject} from "$lib/utils/types"
   //   export let hasChanged;
 
   console.log($todoList);
@@ -11,9 +12,9 @@
     }, 1500);
   }
 
-  function deleteTask(id) {
+  function deleteTask(id: number) {
     // console.log(id);
-    const removedItem = $todoList.filter((itm) => itm !== id);
+    const removedItem: todoObject = $todoList.filter((itm:todoObject) => itm.id !== id);
     console.log(removedItem);
     $todoList = removedItem;
     if ($todoList.length === 0) {
@@ -24,20 +25,23 @@
 </script>
 
 <div class="list">
-  {#each $todoList as thisTodo, i}
+  {#each $todoList as {id, text, done}, i}
     <!-- <p>{todoList[0]}</p> -->
     <div class="todo {i % 2 === 0 ? 'primary' : 'secondary'}">
       <span>
-        {thisTodo}
+        {text}
       </span>
-      <span role="button" class="remove semibold" on:click={deleteTask(thisTodo)}
-        >&times;</span
-      >
+      <div>
+        <span role="button" class:check={done=true} class="semibold" on:click={() => done = !done }
+          >&check;</span>
+        <span role="button" class="remove semibold" on:click={() => deleteTask(id)}
+          >&times;</span>        
+      </div>
     </div>
   {/each}
   {#if $todoList.length}
     <div
-      transition:fly={{ duration: "1000", y: "500" }}
+      transition:fly={{ duration: 1000, y: 500 }}
       class="todo info delete"
       role="button"
       on:click={() => {
@@ -69,6 +73,9 @@
     width: 100%;
     margin-bottom: 1em;
     margin: 0 auto;
+  }
+  .check, .done {
+    color: #0d0;
   }
 
   .todo {
