@@ -22,6 +22,16 @@
       displayMsg();
     }
   }
+  function deleteDone() {
+    // console.log(id);
+    const removedItem = $todoList.filter((itm:todoObject) => !itm.done);
+    console.log(removedItem);
+    $todoList = removedItem;
+    if ($todoList.length === 0) {
+      console.log($msg);
+      displayMsg();
+    }
+  }
 </script>
 
 <div class="list">
@@ -40,16 +50,24 @@
     </div>
   {/each}
   {#if $todoList.length}
-    <div
+  <div class="button-group">
+    <button
       transition:fly={{ duration: 1000, y: 500 }}
-      class="todo info delete"
-      role="button"
+      class="info delete"
       on:click={() => {
         $todoList = [];
         displayMsg();
       }}
     >
-      effacer liste
+      tout effacer
+    </button>
+    <button
+      transition:fly={{ duration: 1000, y: 500 }}
+      class="success delete"
+      on:click={deleteDone}
+    >
+      effacer terminés
+    </button>
     </div>
   {/if}
 </div>
@@ -82,14 +100,29 @@
     display: flex;
     justify-content: space-between;
 
-    font-size: 1.25em;
+    text-indent: 8px;
     padding: 8px;
     margin-bottom: 8px;
+    font-variant: small-caps;
+  }
+  button, .todo {
+    font-size: 1.25em;
     border-radius: 8px;
     color: #444;
+    
+  }
+  button {
+    text-transform: uppercase;
+    letter-spacing: 1pt;
+
+    /* padding: 8px; */
+    /* margin-bottom: 8px; */
   }
   .primary {
     background: rgba(127, 0, 127, 0.3);
+  }
+  .success {
+    background: rgba(0, 255, 0, 0.7);
   }
   .secondary {
     background: rgba(127, 127, 0, 0.3);
@@ -97,17 +130,42 @@
   .info {
     background: rgba(0, 127, 255, 0.3);
     padding: 0.75em;
-    box-shadow: 8px 8px 1em rgba(0, 0, 0, 0.5);
+    /* box-shadow: 8px 8px 1em rgba(0, 0, 0, 0.5); */
   }
-
+  
   .remove, 
   .delete {
+    padding: 0.75em;
     cursor: pointer;
   }
+  .button-group {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
 
+  }
+  .button-group * {
+    /* margin-bottom: 0.5em; */
+    width: 100%;
+    justify-self: center;
+    /* margin: 0.5em 0; */
+  }
+
+  
   @media (min-width: 640px) {
     .list {
       /* width: 50%; */
+    }
+    .button-group {
+      flex-direction: row;
+    }
+    .button-group * {
+      /* margin-bottom: 0.5em; */
+      width: 100%;
+      /* margin: 0 0.5em; */
+  
     }
   }
 </style>
