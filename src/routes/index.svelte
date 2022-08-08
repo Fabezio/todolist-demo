@@ -1,19 +1,14 @@
-<script lang="ts" context="module">
+<script context="module">
   export const prerender = true;
 </script>
 
 <script lang="ts" >
   import { onMount } from "svelte";
-  import type {TODO} from "$lib/types"
   import List from "$lib/components/List.svelte";
   import Message from "$lib/components/Message.svelte";
   import { todoList, hasChanged, msg } from "$lib/store";
-<<<<<<< HEAD
   import type {todoObject} from "$lib/utils/types"
 
-=======
-  // $todoList:  ;
->>>>>>> 191c119818ed9c1e8cf2deed057949b39518c7d2
   onMount(() => {
     $hasChanged = false;
   });
@@ -28,11 +23,7 @@
     key: string
   }
 
-<<<<<<< HEAD
   function addTodo(e: evt) {
-=======
-  function addTodo(e: {key: string}) {
->>>>>>> 191c119818ed9c1e8cf2deed057949b39518c7d2
     // hasChanged = false;
     // console.log(e.key);
     if (todo.length && e.key === "Enter") {
@@ -43,16 +34,7 @@
       };
       console.log(typeof e);
       // textStatus = "valid";
-<<<<<<< HEAD
       $todoList = [...$todoList, newTodo];
-=======
-      const newTodo:TODO = {
-        id: Date.now(), 
-        text: todo, 
-        done: false,
-      }
-      $todoList  = [...$todoList, newTodo];
->>>>>>> 191c119818ed9c1e8cf2deed057949b39518c7d2
       todo = "";
     }
   }
@@ -62,22 +44,37 @@
   <title>{title}</title>
 </svelte:head>
 
-<div class="text-center ">
-  <h1 class="title">{title}</h1>
-</div>
+<main>
+  <div class="title">
+    <h1>{title}</h1>
+  </div>
+  <input on:keydown={addTodo} type="text" bind:value={todo} />
+  <div class="box">
+    <List />
+    <Message />
+  </div>
 
-<input on:keydown={addTodo} type="text" bind:value={todo} />
-
-<List />
-<Message />
+  <!-- <p>{todoAdd}</p> -->
+  <!-- <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p> -->
+</main>
 
 <style>
-  
-  .title {
+  main {
+    text-align: center;
+    padding: 0.5em;
+    /* max-width: 240px; */
+    margin: 0 auto;
+
+    /* box-sizing: content-box; */
+  }
+  div.title {
     margin: 3em auto;
+
+    /* max-width: 16em; */
   }
 
   h1 {
+    display: inline;
     background: -webkit-linear-gradient(
       -135deg,
       violet,
@@ -88,8 +85,6 @@
       orange,
       red
     );
-    text-align: center;
-    margin: auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -97,12 +92,9 @@
     font-size: 3.5em;
     font-weight: 300;
   }
-  input {
-    width: 100%;
-    text-indent: 0.75em;
-    height: 2.5em;
-    border-radius: 0.25em;
-    margin-bottom: 1em; 
+  .box {
+    position: relative;
+    margin: 0 auto;
   }
 
   @keyframes fade {
@@ -115,7 +107,6 @@
       opacity: 1;
     }
   }
-<<<<<<< HEAD
 
   input {
     width: 100%;
@@ -132,6 +123,3 @@
     }
   }
 </style>
-=======
-</style>
->>>>>>> 191c119818ed9c1e8cf2deed057949b39518c7d2
