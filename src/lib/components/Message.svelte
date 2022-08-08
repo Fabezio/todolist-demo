@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script lang="ts">
   import { todoList, hasChanged, msg } from "../store";
   // import type {todoObject} from "$lib/utils/types"
@@ -14,19 +15,37 @@
       css: (t:number) => `opacity: ${t * o}`,
     };
   }
+=======
+<script lang="ts" >
+  import { todoList, hasChanged, msg } from "../store";
+ import {fade} from "svelte/transition"
+  //   export let hasChanged;
+  //   export let msg;
+  // function fade(node, { delay = 300, duration = 300 }) {
+  //   const o = +getComputedStyle(node).opacity;
+
+  //   return {
+  //     delay,
+  //     duration,
+  //     css: (t) => `opacity: ${t * o}`,
+  //   };
+  // }
+>>>>>>> 191c119818ed9c1e8cf2deed057949b39518c7d2
 
   console.log("list state:", $hasChanged);
 </script>
-
 {#if $hasChanged && !$todoList.length}
-  <div class="bar">
-    <div transition:fade class="todo info">
-      {$msg}
+<div class="box">
+    <div class="bar">
+      <div transition:fade class="todo info">
+        {$msg}
+      </div>
     </div>
-  </div>
-  <!-- {:else}
-    <div /> -->
-{/if}
+    <!-- {:else}
+      <div /> -->
+    </div>
+  {/if}
+
 
 <style>
   /* 
@@ -42,7 +61,7 @@
   } */
 
   .bar {
-    position: absolute;
+    /* position: relative; */
     display: inline;
     top: 0;
     left: 0;
@@ -67,10 +86,10 @@
     padding: 0.75em;
     box-shadow: 8px 8px 1em rgba(0, 0, 0, 0.5);
   }
-
+/* 
   @media (min-width: 640px) {
     .bar {
-      /* width: 50%; */
+      width: 50%;
     }
-  }
+  } */
 </style>
