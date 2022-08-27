@@ -32,6 +32,7 @@
       displayMsg();
     }
   }
+  $: disabled = $todoList.every(item => !item.done);
 </script>
 
 <div class="list">
@@ -63,6 +64,7 @@
     </button>
     <button
       transition:fly={{ duration: 1000, y: 500 }}
+      {disabled}
       class="success delete"
       on:click={deleteDone}
     >
